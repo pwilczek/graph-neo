@@ -34,6 +34,14 @@ public class Question {
         return content;
     }
 
+    public Answer newAnswer(String content) {
+        if (isBlank(content)) throw new IllegalArgumentException("Answer cannot be null or blank!");
+        Answer answer = new Answer(this);
+        answer.content = content;
+        answers.add(answer);
+        return answer;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) return true;
@@ -45,9 +53,7 @@ public class Question {
         return content.hashCode();
     }
 
-    public Answer newAnswer(String content) {
-        Answer answer = new Answer(this);
-        answer.content = content;
-        return answer;
+    int countAnswers() {
+        return answers.size();
     }
 }

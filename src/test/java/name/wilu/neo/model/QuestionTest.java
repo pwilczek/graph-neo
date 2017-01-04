@@ -24,11 +24,23 @@ public class QuestionTest {
         Question.about("  ");
     }
 
-    @Test public void questionShouldProduceAnswerBuilder() throws Exception {
+    @Test public void shouldProduceAnswers() throws Exception {
         Question q = Question.about("some stuff");
         Answer answer = q.newAnswer("foo");
         assertThat(answer.is(), is("foo"));
         assertThat(answer.to(), is(q));
+        assertThat(q.countAnswers(), is(1));
+        q.newAnswer("bar");
+        assertThat(q.countAnswers(), is(2));
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldFailWhenAnswerIsNull() throws Exception {
+        Question.about("other stuff").newAnswer(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldFailWhenAnswerIsBlank() throws Exception {
+        Question.about("other stuff").newAnswer("  ");
     }
 }

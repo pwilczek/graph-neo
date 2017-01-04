@@ -17,6 +17,14 @@ public class Answer {
         this.question = question;
     }
 
+    public String is() {
+        return content;
+    }
+
+    public Question to() {
+        return question;
+    }
+
     @Override public boolean equals(Object other) {
         if (this == other) return true;
         if (!(other instanceof Answer)) return false;
@@ -26,13 +34,5 @@ public class Answer {
 
     @Override public int hashCode() {
         return new HashCodeBuilder().append(content).append(question).toHashCode();
-    }
-
-    public String is() {
-        return content;
-    }
-
-    public Question to() {
-        return question;
     }
 }
