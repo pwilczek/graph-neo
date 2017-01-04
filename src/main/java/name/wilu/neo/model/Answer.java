@@ -9,9 +9,13 @@ import org.neo4j.ogm.annotation.NodeEntity;
 public class Answer {
 
     private @GraphId Long id;
-    private String content;
+    String content;
     //
     private Question question;
+
+    public Answer(Question question) {
+        this.question = question;
+    }
 
     @Override public boolean equals(Object other) {
         if (this == other) return true;
@@ -22,5 +26,13 @@ public class Answer {
 
     @Override public int hashCode() {
         return new HashCodeBuilder().append(content).append(question).toHashCode();
+    }
+
+    public String is() {
+        return content;
+    }
+
+    public Question to() {
+        return question;
     }
 }

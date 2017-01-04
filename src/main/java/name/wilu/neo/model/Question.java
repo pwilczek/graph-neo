@@ -44,4 +44,10 @@ public class Question {
     @Override public int hashCode() {
         return content.hashCode();
     }
+
+    public Answer newAnswer(String content) {
+        Answer answer = new Answer(this);
+        answer.content = content;
+        return answer;
+    }
 }

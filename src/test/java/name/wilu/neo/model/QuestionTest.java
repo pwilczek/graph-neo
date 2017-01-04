@@ -23,4 +23,12 @@ public class QuestionTest {
     public void shouldFailOnEmptyQuestion() throws Exception {
         Question.about("  ");
     }
+
+    @Test public void questionShouldProduceAnswerBuilder() throws Exception {
+        Question q = Question.about("some stuff");
+        Answer answer = q.newAnswer("foo");
+        assertThat(answer.is(), is("foo"));
+        assertThat(answer.to(), is(q));
+
+    }
 }
