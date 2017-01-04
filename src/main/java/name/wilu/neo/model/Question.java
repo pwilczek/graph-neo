@@ -8,6 +8,8 @@ import org.neo4j.ogm.annotation.Relationship;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 @NodeEntity
 public class Question {
 
@@ -22,6 +24,7 @@ public class Question {
     private Question() { }
 
     public static Question about(String content) {
+        if (isBlank(content)) throw new IllegalArgumentException("Question content cannot be missing!");
         Question q = new Question();
         q.content = content;
         return q;
