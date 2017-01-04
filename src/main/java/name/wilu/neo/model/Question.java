@@ -19,6 +19,18 @@ public class Question {
     @Relationship(type = HAS_ANSWER, direction = Relationship.OUTGOING)
     private Set<Answer> answers = new HashSet<>();
 
+    private Question() { }
+
+    public static Question about(String content) {
+        Question q = new Question();
+        q.content = content;
+        return q;
+    }
+
+    public String topic() {
+        return content;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) return true;
